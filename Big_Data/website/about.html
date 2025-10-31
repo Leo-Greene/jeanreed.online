@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="关于HTTPS演示网站的技术细节和特性介绍">
+    <title>关于 - HTTPS演示网站</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🔒 HTTPS演示</div>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html" class="active">关于</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="about-content">
+            <h1>关于HTTPS演示网站</h1>
+            <p>这是一个专门用于演示HTTPS安全特性的网站，展示了现代Web安全的最佳实践。</p>
+            
+            <h2>技术特性</h2>
+            <ul>
+                <li>SSL/TLS端到端加密传输</li>
+                <li>HTTP到HTTPS自动重定向</li>
+                <li>HSTS（HTTP严格传输安全）</li>
+                <li>安全头部配置（X-Frame-Options、X-Content-Type-Options等）</li>
+                <li>HTTP/2多路复用和头部压缩</li>
+                <li>静态资源缓存优化</li>
+            </ul>
+            
+            <h2>技术栈</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <span class="tech-icon">🌐</span>
+                    <span>Nginx</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">🔐</span>
+                    <span>SSL/TLS</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">⚡</span>
+                    <span>HTTP/2</span>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">🛡️</span>
+                    <span>安全头部</span>
+                </div>
+            </div>
+            
+            <h2>安全配置详情</h2>
+            <p>本网站实现了以下安全配置：</p>
+            <ul>
+                <li><strong>SSL配置：</strong>使用自签名证书演示TLS加密</li>
+                <li><strong>重定向：</strong>HTTP(80端口)自动重定向到HTTPS(443端口)</li>
+                <li><strong>HSTS：</strong>max-age=31536000; includeSubDomains</li>
+                <li><strong>安全头部：</strong>X-Frame-Options: DENY, X-Content-Type-Options: nosniff</li>
+                <li><strong>缓存策略：</strong>静态资源长期缓存，动态内容不缓存</li>
+            </ul>
+            
+            <h2>演示目的</h2>
+            <p>本网站主要用于：</p>
+            <ol>
+                <li>展示HTTPS配置的正确实现方式</li>
+                <li>演示安全头部的作用和效果</li>
+                <li>提供HTTPS安全测试环境</li>
+                <li>作为Web安全学习的参考示例</li>
+                <li>验证Nginx安全配置的最佳实践</li>
+            </ol>
+            
+            <div class="security-notice">
+                <h3>⚠️ 重要提示</h3>
+                <p>本网站使用自签名证书进行演示，在实际生产环境中应使用受信任的CA颁发的证书。</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 HTTPS演示网站 - 使用Nginx配置</p>
+    </footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

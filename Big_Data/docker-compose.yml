@@ -1,0 +1,21 @@
+services:
+  https-website:
+    build: .
+    container_name: https-website
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./website:/var/www/html
+      - ./nginx-config/development:/etc/nginx/conf.d
+      - ./nginx-config/snippets:/etc/nginx/snippets
+      - ./ssl-certs/certs/localhost:/etc/ssl/certs/
+      - ./ssl-certs/private/localhost:/etc/ssl/private/
+      - ./scripts:/app/scripts
+    restart: unless-stopped
+    networks:
+      - web-network
+
+networks:
+  web-network:
+    driver: bridge

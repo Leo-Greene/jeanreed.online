@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTPS演示网站 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🔒 HTTPS演示</div>
+            <ul>
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>HTTPS安全演示网站</h1>
+            <p>展示SSL/TLS加密、HSTS、安全头部等现代Web安全特性</p>
+            <div class="security-info">
+                <div class="status">🔒 安全连接</div>
+                <div class="protocol">🌐 HTTPS/2</div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>核心安全特性</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>🔐 SSL/TLS加密</h3>
+                    <p>端到端加密传输，保护数据在传输过程中的安全性</p>
+                </div>
+                <div class="feature">
+                    <h3>🛡️ HSTS保护</h3>
+                    <p>强制浏览器使用HTTPS连接，防止降级攻击</p>
+                </div>
+                <div class="feature">
+                    <h3>🔒 安全头部</h3>
+                    <p>X-Frame-Options、X-Content-Type-Options等安全防护</p>
+                </div>
+                <div class="feature">
+                    <h3>⚡ HTTP/2性能</h3>
+                    <p>多路复用、头部压缩等HTTP/2性能优化特性</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo">
+            <h2>安全连接测试</h2>
+            <button class="btn" onclick="checkSecurity()">检测当前连接安全性</button>
+            <div id="security-status">
+                <p>点击上方按钮检测当前连接的安全状态</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HTTPS演示网站 - 使用Nginx配置</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
