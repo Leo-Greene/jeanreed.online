@@ -11,6 +11,9 @@ WORKDIR /app
 # 创建必要的目录结构
 RUN mkdir -p /app/scripts /app/config /var/www/html /var/log/nginx
 
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+    sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+    
 # 一次性安装所有包（减少镜像层，提高构建速度）
 RUN apt-get update && apt-get install -y \
     # 基础工具
