@@ -13,7 +13,7 @@ RUN mkdir -p /app/scripts /app/config /var/www/html /var/log/nginx
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
-    
+
 # 一次性安装所有包（减少镜像层，提高构建速度）
 RUN apt-get update && apt-get install -y \
     # 基础工具
@@ -45,6 +45,9 @@ RUN apt-get update && apt-get install -y \
 RUN usermod -a -G www-data root && \
     chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
+
+# 添加这行 - 禁用默认配置
+RUN rm -f /etc/nginx/sites-enabled/default
 
 # 暴露端口
 EXPOSE 80
