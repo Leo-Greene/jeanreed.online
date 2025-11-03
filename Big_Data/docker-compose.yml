@@ -7,7 +7,7 @@ services:
       - "443:443"
     volumes:
       - ./website:/var/www/html
-      - ./nginx-config/development:/etc/nginx/conf.d
+      - ./nginx-config/production:/etc/nginx/conf.d
       - ./nginx-config/snippets:/etc/nginx/snippets
       - ./ssl-certs/certs/localhost:/etc/ssl/certs/
       - ./ssl-certs/private/localhost:/etc/ssl/private/
