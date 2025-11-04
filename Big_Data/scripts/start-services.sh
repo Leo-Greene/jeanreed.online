@@ -3,6 +3,9 @@ set -e
 
 echo "🚀 开始启动HTTPS网站服务..."
 
+echo "删除默认的Nginx配置..."
+rm -f /etc/nginx/sites-enabled/default
+
 echo "测试Nginx配置..."
 nginx -t
 
