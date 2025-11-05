@@ -1,4 +1,39 @@
 services:
+  db:
+    image: postgres:15
+    container_name: opaque-demo-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: opaque_demo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - web-network
+
+  backend:
+    build: ./backend
+    container_name: opaque-demo-backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=opaque_demo
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - SECRET_KEY=your-secret-key-here
+      - DEBUG=True
+    networks:
+      - web-network
+
   https-website:
     build: .
     container_name: https-website
@@ -7,14 +42,19 @@ services:
       - "443:443"
     volumes:
       - ./website:/var/www/html
-      - ./nginx-config/production:/etc/nginx/conf.d
+      - ./nginx-config/prod_login:/etc/nginx/conf.d
       - ./nginx-config/snippets:/etc/nginx/snippets
       - ./ssl-certs/certs/localhost:/etc/ssl/certs/
       - ./ssl-certs/private/localhost:/etc/ssl/private/
       - ./scripts:/app/scripts
     restart: unless-stopped
+    depends_on:
+      - backend
     networks:
       - web-network
+
+volumes:
+  postgres_data:
 
 networks:
   web-network:
